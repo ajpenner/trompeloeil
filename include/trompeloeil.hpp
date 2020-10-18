@@ -2511,7 +2511,7 @@ template <typename T>
       location loc,
       S&& ... s)
     noexcept
-      : matchers{sequence_matcher{name, loc, std::forward<S>(s)}...}
+      : matchers{{sequence_matcher{name, loc, std::forward<S>(s)}...}}
     {
     }
 
