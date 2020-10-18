@@ -3711,8 +3711,7 @@ template <typename T>
     noexcept
     override
     {
-      auto saturated = call_count >= min_calls;
-      return saturated || !sequences || sequences->is_first();
+      return !sequences || sequences->is_first();
     }
 
     return_of_t<Sig>
@@ -3924,10 +3923,6 @@ template <typename T>
     {
       auto lock = get_lock();
       m.matcher->hook_last(obj.trompeloeil_matcher_list(static_cast<Tag*>(nullptr)));
-      if (m.matcher->min_calls == 0 && m.matcher->sequences)
-      {
-        m.matcher->sequences->retire();
-      }
 
       return std::unique_ptr<expectation>(m.matcher);
     }
