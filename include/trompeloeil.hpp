@@ -1770,6 +1770,10 @@ template <typename T>
   {
   public:
     using init_type = std::pair<char const*, sequence&>;
+
+    sequence_matcher(); // never called, just make MSVC happy
+                        // https://github.com/microsoft/STL/issues/942
+
     sequence_matcher(
       char const *exp,
       location loc,
