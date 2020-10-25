@@ -2763,9 +2763,9 @@ template <typename T>
   private:
     // work around for MS STL ossue 942
     // https://github.com/microsoft/STL/issues/942
-    std::conditional_t<N == 0,
-                       std::vector<sequence_matcher>,
-                       std::array<sequence_matcher, N>> matchers;
+    detail::conditional_t<N == 0,
+                          std::vector<sequence_matcher>,
+                          std::array<sequence_matcher, N>> matchers;
   };
 
   struct lifetime_monitor;
