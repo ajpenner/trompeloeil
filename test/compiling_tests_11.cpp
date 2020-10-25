@@ -476,7 +476,7 @@ TEST_CASE_METHOD(
 
     ALLOW_CALL_V(obj, count(),
                  .IN_SEQUENCE(seq)
-                 .RETURN(1));
+                 .RETURN(2));
 
     std::string foo = "foo";
 
