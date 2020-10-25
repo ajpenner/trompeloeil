@@ -1879,7 +1879,7 @@ template <typename T>
   const
   noexcept
   {
-    unsigned cost = 0U;
+    unsigned sequence_cost = 0U;
     for (auto& e : matchers)
     {
       if (&e == m) break;
@@ -1887,8 +1887,9 @@ template <typename T>
       {
         return ~0U;
       }
+      ++sequence_cost;
     }
-    return cost;
+    return sequence_cost;
   }
 
   inline
