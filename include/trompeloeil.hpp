@@ -1890,7 +1890,7 @@ template <typename T>
       }
       ++sequence_cost;
     }
-    return ~0;
+    return ~0U;
   }
 
   inline
