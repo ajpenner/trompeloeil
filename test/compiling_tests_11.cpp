@@ -499,17 +499,17 @@ TEST_CASE_METHOD(
     mock_c obj;
     trompeloeil::sequence seq;
 
-    ALLOW_CALL(obj, getter(1))
-      .IN_SEQUENCE(seq)
-      .RETURN(1);
+    ALLOW_CALL_V(obj, getter(1),
+                 .IN_SEQUENCE(seq)
+                 .RETURN(1));
 
-    ALLOW_CALL(obj, getter(2))
-      .IN_SEQUENCE(seq)
-      .RETURN(2);
+    ALLOW_CALL_V(obj, getter(2),
+                 .IN_SEQUENCE(seq)
+                 .RETURN(2));
 
-    ALLOW_CALL(obj, getter(3))
-      .IN_SEQUENCE(seq)
-      .RETURN(3);
+    ALLOW_CALL_V(obj, getter(3),
+                 .IN_SEQUENCE(seq)
+                 .RETURN(3));
 
     REQUIRE(obj.getter(1) == 1);
     REQUIRE(obj.getter(1) == 1);
@@ -530,17 +530,17 @@ TEST_CASE_METHOD(
     mock_c obj;
     trompeloeil::sequence seq;
 
-    ALLOW_CALL(obj, getter(1))
-      .IN_SEQUENCE(seq)
-      .RETURN(1);
+    ALLOW_CALL_V(obj, getter(1),
+                 .IN_SEQUENCE(seq)
+                 .RETURN(1));
 
-    ALLOW_CALL(obj, getter(2))
-      .IN_SEQUENCE(seq)
-      .RETURN(2);
+    ALLOW_CALL_V(obj, getter(2),
+                 .IN_SEQUENCE(seq)
+                 .RETURN(2));
 
-    ALLOW_CALL(obj, getter(3))
-      .IN_SEQUENCE(seq)
-      .RETURN(3);
+    ALLOW_CALL_V(obj, getter(3),
+                 .IN_SEQUENCE(seq)
+                 .RETURN(3));
 
     REQUIRE(obj.getter(1) == 1);
     REQUIRE(obj.getter(1) == 1);
@@ -558,17 +558,17 @@ TEST_CASE_METHOD(
   mock_c obj;
   trompeloeil::sequence seq;
 
-  ALLOW_CALL(obj, getter(1))
-    .IN_SEQUENCE(seq)
-    .RETURN(1);
+  ALLOW_CALL_V(obj, getter(1),
+               .IN_SEQUENCE(seq)
+               .RETURN(1));
 
-  ALLOW_CALL(obj, getter(2))
-    .IN_SEQUENCE(seq)
-    .RETURN(2);
+  ALLOW_CALL_V(obj, getter(2),
+               .IN_SEQUENCE(seq)
+               .RETURN(2));
 
-  ALLOW_CALL(obj, getter(3))
-    .IN_SEQUENCE(seq)
-    .RETURN(3);
+  ALLOW_CALL_V(obj, getter(3),
+               .IN_SEQUENCE(seq)
+               .RETURN(3));
 
   REQUIRE(obj.getter(1) == 1);
   REQUIRE(obj.getter(1) == 1);
@@ -597,17 +597,17 @@ TEST_CASE_METHOD(
   mock_c obj;
   trompeloeil::sequence seq;
 
-  ALLOW_CALL(obj, getter(1))
-    .IN_SEQUENCE(seq)
-    .RETURN(1);
+  ALLOW_CALL_V(obj, getter(1),
+               .IN_SEQUENCE(seq)
+               .RETURN(1));
 
-  ALLOW_CALL(obj, getter(2))
-    .IN_SEQUENCE(seq)
-    .RETURN(2);
+  ALLOW_CALL_V(obj, getter(2),
+               .IN_SEQUENCE(seq)
+               .RETURN(2));
 
-  ALLOW_CALL(obj, getter(3))
-    .IN_SEQUENCE(seq)
-    .RETURN(3);
+  ALLOW_CALL_V(obj, getter(3),
+               .IN_SEQUENCE(seq)
+               .RETURN(3));
 
   REQUIRE(obj.getter(3) == 3);
   REQUIRE(obj.getter(3) == 3);
