@@ -131,6 +131,26 @@ linux_task:
         STDLIB: libc++
         SANITIZE: true
 
+      - COMPILER: clang++-9
+        CXXSTD: 17
+        STDLIB: libstdc++
+        SANITIZE: false
+
+      - COMPILER: clang++-9
+        CXXSTD: 17
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-9
+        CXXSTD: 17
+        STDLIB: libc++
+        SANITIZE: false
+
+      - COMPILER: clang++-9
+        CXXSTD: 17
+        STDLIB: libc++
+        SANITIZE: true
+
   build_script:
     - CXX=${COMPILER} CXXFLAGS=-std=c++${CXXSTD} ./check_errors.sh || {
         FAILURES="$?" ;
