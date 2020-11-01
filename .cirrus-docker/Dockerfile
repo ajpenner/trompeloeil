@@ -3,7 +3,7 @@ FROM ubuntu:focal AS python-build
 
 RUN apt-get update          && \
     apt-get dist-upgrade -y && \
-    apt-get install -y cmake wget 'kcov' 'g++-10' 'g++-9' 'g++-8' 'g++-7' 'clang-10' 'clang-9' 'clang-8' 'clang-7' 'clang-6.0' 'libc++-10-dev' 'libc++abi-dev'
+    apt-get install -y 'gnupg2' 'cmake' 'wget' 'kcov' 'g++-10' 'g++-9' 'g++-8' 'g++-7' 'clang-10' 'clang-9' 'clang-8' 'clang-7' 'clang-6.0' 'libc++-10-dev' 'libc++abi-dev'
 RUN apt-key adv --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 3B4FE6ACC0B21F32
 RUN apt-add-repository "deb http://archive.ubuntu.com/ubuntu bionic main universe"
 RUN apt install -y 'g++-4.8' 'g++-4.9' 'g++-5' 'g++-6' 'clang++-3.5' 'clang++-4.0' 'clang++-5.0' 'clang++-6.0'
