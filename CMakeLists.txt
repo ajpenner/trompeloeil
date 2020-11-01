@@ -387,8 +387,9 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
     )
 
   endif()
-
+  message("coveralls_id=${COVERALLS_ID}")
   if(COVERALLS_ID)
+    message("id set for kcov")
     set(COVERALLS_FLAG "--coveralls-id=${COVERALLS_ID}")
   endif()
 
