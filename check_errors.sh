@@ -40,7 +40,9 @@ do
   RE=`sed -n "$SCRIPT" < $f`
   printf "%-45s" $f
   # echo "RE=$RE"
-  ${CXX} ${CXXFLAGS} ${CPPFLAGS} -I ../include $f -c 2>&1 | egrep  "${RE}" && echo ${PASS} && continue || echo ${FAIL} && false
+  ${CXX} ${CXXFLAGS} ${CPPFLAGS} -I ../include $f -c 2>&1 > /tmp/outfile
+  cat /tmp/outfile
+  cat /tmp/outfile | egrep  "${RE}" && echo ${PASS} && continue || echo ${FAIL} && false
   FAILURES=$((FAILURES+$?))
 done
 # echo "FAILURES=$FAILURES"
