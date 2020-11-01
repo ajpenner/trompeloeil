@@ -1,6 +1,6 @@
 FROM ubuntu:focal AS python-build
 
-
+ENV TZ=UTC
 RUN apt-get update          && \
     apt-get dist-upgrade -y && \
     apt-get install -y 'software-properties-common' 'gnupg2' 'python3-pip' 'cmake' 'wget' 'kcov' 'g++-10' 'g++-9' 'g++-8' 'g++-7' 'clang-10' 'clang-9' 'clang-8' 'clang-7' 'clang-6.0' 'libc++-10-dev' 'libc++abi-dev'
