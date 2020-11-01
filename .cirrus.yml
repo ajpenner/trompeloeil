@@ -93,19 +93,41 @@ linux_task:
 
       - COMPILER: clang++-10
         CXXSTD: 20
-        SANITIZE: false
-
-      - COMPILER: clang++-10
-        CXXSTD: 20
+        STDLIB: libstdc++
         SANITIZE: true
 
       - COMPILER: clang++-10
         CXXSTD: 20
         STDLIB: libc++
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: clang++-10
-        CXXSTD: 20
+        CXXSTD: 17
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-10
+        CXXSTD: 17
+        STDLIB: libc++
+        SANITIZE: true
+
+      - COMPILER: clang++-10
+        CXXSTD: 14
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-10
+        CXXSTD: 14
+        STDLIB: libc++
+        SANITIZE: true
+
+      - COMPILER: clang++-10
+        CXXSTD: 11
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-10
+        CXXSTD: 11
         STDLIB: libc++
         SANITIZE: true
 
