@@ -6,6 +6,7 @@ RUN apt-get update          && \
     apt-get install -y 'software-properties-common' 'gnupg2' 'cmake' 'wget' 'kcov' 'g++-10' 'g++-9' 'g++-8' 'g++-7' 'clang-10' 'clang-9' 'clang-8' 'clang-7' 'clang-6.0' 'libc++-10-dev' 'libc++abi-dev'
 RUN apt-key adv --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 3B4FE6ACC0B21F32
 RUN apt-add-repository "deb http://archive.ubuntu.com/ubuntu bionic main universe"
+RUN apt-add-repository "deb http://archive.ubuntu.com/ubuntu xenial main universe"
 RUN apt-get update
 RUN apt-get install -y 'g++-4.8' 'g++-4.9' 'g++-5' 'g++-6'
 RUN pip3 install conan
