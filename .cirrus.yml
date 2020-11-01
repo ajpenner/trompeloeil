@@ -5,35 +5,35 @@ linux_task:
     matrix:
       - COMPILER: g++-10
         CXXSTD: 11
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: g++-10
         CXXSTD: 14
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: g++-10
         CXXSTD: 17
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: g++-10
         CXXSTD: 20
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: g++-9
         CXXSTD: 11
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: g++-9
         CXXSTD: 14
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: g++-9
         CXXSTD: 17
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: g++-9
         CXXSTD: 20
-        SANITIZE: false
+        SANITIZE: true
 
   build_script:
     - mkdir build
@@ -43,4 +43,6 @@ linux_task:
     - make VERBOSE=1 custom_recursive_mutex
   test_script:
     - cd build
-    - make run_self_test && make run_coverage
+    - make run_self_test
+    - |
+      make run_coverage
