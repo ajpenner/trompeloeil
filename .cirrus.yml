@@ -5,8 +5,8 @@ linux_task:
     matrix:
       - COMPILER: clang++-10
         CXXSTD: 14
-        STDLIB: "libc++"
-        LDFLAGS: "-fuse-ld=gold -lc++abi"
+        STDLIB: "libstdc++"
+        LDFLAGS: "-fuse-ld=gold"
         SANITIZE: true
   build_script:
     - mkdir build
