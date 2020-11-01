@@ -219,12 +219,12 @@ linux_task:
       - COMPILER: clang++-3.5
         CXXSTD: 14
         STDLIB: libstdc++
-        SANITIZE: true
+        SANITIZE: false
 
       - COMPILER: clang++-3.5
         CXXSTD: 11
         STDLIB: libstdc++
-        SANITIZE: true
+        SANITIZE: false
 
   build_script:
     - CXX=${COMPILER} CXXFLAGS=-std=c++${CXXSTD} ./check_errors.sh || {
