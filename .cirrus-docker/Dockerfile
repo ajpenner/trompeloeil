@@ -9,7 +9,7 @@ RUN apt-key adv --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 3B4FE6A
 RUN apt-add-repository "deb http://archive.ubuntu.com/ubuntu bionic main universe"
 RUN apt-add-repository "deb http://archive.ubuntu.com/ubuntu xenial main universe"
 RUN apt-get update
-RUN apt-get install -y 'g++-4.8' 'g++-4.9' 'g++-5' 'g++-6' 'clang++-3.5' 'clang++-4.0' 'clang++-5.0' 'clang++-6.0'
+RUN apt-get install -y 'g++-4.8' 'g++-4.9' 'g++-5' 'g++-6' 'clang++-3.5' 'clang++-4.0' 'clang++-5.0'
 RUN pip3 install conan
 ENV PATH="/usr/local/bin:$PATH" LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib:/usr/local/libexec"
 RUN echo "#include <iostream>\n\
