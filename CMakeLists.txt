@@ -35,7 +35,6 @@ if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 endif()
 
 if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
-
   if (${CXX_STANDARD})
     set(CMAKE_CXX_STANDARD ${CXX_STANDARD})
   else()
@@ -71,7 +70,7 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
   # MSVC compilers run on Windows platforms.
 
   find_program(KCOV_BIN kcov)
-  if((CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU") AND NOT KCOV_BIN)
+  if(NOT KCOV_BIN)
     set(BUILD_KCOV TRUE)
     # kcov is only available on Linux platforms.
 	ExternalProject_Add(
@@ -86,6 +85,8 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
 		"-DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/kcov"
 	)
     set(KCOV_BIN "${CMAKE_CURRENT_BINARY_DIR}/kcov/bin/kcov")
+  endif()
+  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     set(
       LIBCXX_PREFIX_PATH
       "/usr/lib/llvm-8"
@@ -186,7 +187,6 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
     # Default sanitizer target properties.
     set(TSAN "-fsanitize=undefined,thread")
     set(SSAN "-fsanitize=undefined,address")
-
     # Exceptions to sanitizer target properties based on compiler and compiler version.
     if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
@@ -233,7 +233,6 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
     PRIVATE
     ${CATCH_DIR}
   )
-
   if (SANITIZE)
     set_target_properties(
       self_test
