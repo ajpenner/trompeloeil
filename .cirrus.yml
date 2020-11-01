@@ -3,10 +3,17 @@ linux_task:
     dockerfile: .cirrus-docker/Dockerfile
   env:
     matrix:
-      - COMPILER: clang++-10
+      - COMPILER: g++-10
+        CXXSTD: 11
+        SANITIZE: true
+      - COMPILER: g++-10
         CXXSTD: 14
-        STDLIB: "libstdc++"
-        LDFLAGS: "-fuse-ld=gold"
+        SANITIZE: true
+      - COMPILER: g++-10
+        CXXSTD: 17
+        SANITIZE: true
+      - COMPILER: g++-10
+        CXXSTD: 20
         SANITIZE: true
   build_script:
     - mkdir build
