@@ -176,17 +176,17 @@ linux_task:
         STDLIB: libstdc++
         SANITIZE: true
 
-      - COMPILER: clang++-6
+      - COMPILER: clang++-6.0
         CXXSTD: 17
         STDLIB: libstdc++
         SANITIZE: true
 
-      - COMPILER: clang++-6
+      - COMPILER: clang++-6.0
         CXXSTD: 14
         STDLIB: libstdc++
         SANITIZE: true
 
-      - COMPILER: clang++-6
+      - COMPILER: clang++-6.0
         CXXSTD: 11
         STDLIB: libstdc++
         SANITIZE: true
