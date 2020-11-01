@@ -35,7 +35,7 @@ matrix:
             exit 1 ;
           }
         - mkdir build && cd build
-        - CXX=${COMPILER} cmake -DCMAKE_BUILD_TYPE=Debug -DTRAVIS_JOB_ID='${TRAVIS_JOB_ID}' -DSANITIZE=true ..
+        - CXX=${COMPILER} cmake -DCMAKE_BUILD_TYPE=Debug -DCOVERALLS_ID='${TRAVIS_JOB_ID}' -DSANITIZE=true ..
         - make -j 4 VERBOSE=1 self_test kcov
 
     - os: linux
