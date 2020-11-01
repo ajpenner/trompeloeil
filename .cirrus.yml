@@ -134,21 +134,61 @@ linux_task:
       - COMPILER: clang++-9
         CXXSTD: 17
         STDLIB: libstdc++
-        SANITIZE: false
+        SANITIZE: true
 
       - COMPILER: clang++-9
-        CXXSTD: 17
+        CXXSTD: 14
         STDLIB: libstdc++
         SANITIZE: true
 
       - COMPILER: clang++-9
-        CXXSTD: 17
-        STDLIB: libc++
-        SANITIZE: false
+        CXXSTD: 11
+        STDLIB: libstdc++
+        SANITIZE: true
 
-      - COMPILER: clang++-9
+      - COMPILER: clang++-8
         CXXSTD: 17
-        STDLIB: libc++
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-8
+        CXXSTD: 14
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-8
+        CXXSTD: 11
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-7
+        CXXSTD: 17
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-7
+        CXXSTD: 14
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-7
+        CXXSTD: 11
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-6
+        CXXSTD: 17
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-6
+        CXXSTD: 14
+        STDLIB: libstdc++
+        SANITIZE: true
+
+      - COMPILER: clang++-6
+        CXXSTD: 11
+        STDLIB: libstdc++
         SANITIZE: true
 
   build_script:
