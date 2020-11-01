@@ -70,8 +70,9 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
   # Clang and GNU compilers run on Linux or Linux-like platforms.
   # MSVC compilers run on Windows platforms.
 
-  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-
+  find_program(KCOV_BIN kcov)
+  if((CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU") AND NOT KCOV_BIN)
+    set(BUILD_KCOV TRUE)
     # kcov is only available on Linux platforms.
 	ExternalProject_Add(
 	  kcov
@@ -83,8 +84,8 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
 		${CMAKE_CURRENT_BINARY_DIR}/kcov
 	  CMAKE_ARGS
 		"-DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/kcov"
-	  )
-
+	)
+    set(KCOV_BIN "${CMAKE_CURRENT_BINARY_DIR}/kcov/bin/kcov")
     set(
       LIBCXX_PREFIX_PATH
       "/usr/lib/llvm-8"
@@ -392,16 +393,18 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
     set(COVERALLS_FLAG "--coveralls-id=${TRAVIS_JOB_ID}")
   endif()
 
-  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+  if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND KCOV_BIN)
 
     add_custom_target(
       run_coverage
       COMMAND
-        ${CMAKE_CURRENT_BINARY_DIR}/kcov/bin/kcov --skip-solibs --include-pattern=trompeloeil.hpp ${COVERALLS_FLAG} ./coverage ${CMAKE_CURRENT_BINARY_DIR}/self_test
+        ${KCOV_BIN} --skip-solibs --include-pattern=trompeloeil.hpp ${COVERALLS_FLAG} ./coverage ${CMAKE_CURRENT_BINARY_DIR}/self_test
       DEPENDS
         self_test
-        kcov
     )
+    if (${BUILD_KCOV})
+      add_dependencies(run_coverage kcov)
+    endif()
 
   endif()
 
