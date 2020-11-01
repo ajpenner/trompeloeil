@@ -5,17 +5,29 @@ linux_task:
     matrix:
       - COMPILER: g++-10
         CXXSTD: 11
-        SANITIZE: true
+        SANITIZE: false
       - COMPILER: g++-10
         CXXSTD: 14
-        SANITIZE: true
+        SANITIZE: false
       - COMPILER: g++-10
         CXXSTD: 17
-        SANITIZE: true
+        SANITIZE: false
       - COMPILER: g++-10
         CXXSTD: 20
-        SANITIZE: true
+        SANITIZE: false
   build_script:
+    - COMPILER: g++-9
+      CXXSTD: 11
+      SANITIZE: false
+    - COMPILER: g++-9
+      CXXSTD: 14
+      SANITIZE: false
+    - COMPILER: g++-9
+      CXXSTD: 17
+      SANITIZE: false
+    - COMPILER: g++-9
+      CXXSTD: 20
+      SANITIZE: false
     - mkdir build
     - cd build
     - CXX=${COMPILER} cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" -DCMAKE_CXX_STANDARD=${CXXSTD} -DCXX_STDLIB=${STDLIB} -DSANITIZE=${SANITIZE} ..
