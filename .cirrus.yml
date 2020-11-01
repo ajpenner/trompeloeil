@@ -31,10 +31,6 @@ linux_task:
         CXXSTD: 17
         SANITIZE: true
 
-      - COMPILER: g++-9
-        CXXSTD: 20
-        SANITIZE: true
-
       - COMPILER: g++-8
         CXXSTD: 11
         SANITIZE: true
