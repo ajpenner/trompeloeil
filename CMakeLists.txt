@@ -390,7 +390,7 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
   message("coveralls_id=${COVERALLS_ID}")
   if(COVERALLS_ID)
     message("id set for kcov")
-    set(COVERALLS_FLAG "--coveralls-id='${COVERALLS_ID}'")
+    set(COVERALLS_FLAG "--coveralls-id=${COVERALLS_ID}")
   endif()
 
   if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND KCOV_BIN)
