@@ -35,6 +35,66 @@ linux_task:
         CXXSTD: 20
         SANITIZE: true
 
+      - COMPILER: g++-8
+        CXXSTD: 11
+        SANITIZE: true
+
+      - COMPILER: g++-8
+        CXXSTD: 14
+        SANITIZE: true
+
+      - COMPILER: g++-8
+        CXXSTD: 17
+        SANITIZE: true
+
+      - COMPILER: g++-7
+        CXXSTD: 11
+        SANITIZE: true
+
+      - COMPILER: g++-7
+        CXXSTD: 14
+        SANITIZE: true
+
+      - COMPILER: g++-7
+        CXXSTD: 17
+        SANITIZE: true
+
+      - COMPILER: g++-6
+        CXXSTD: 11
+        SANITIZE: true
+
+      - COMPILER: g++-6
+        CXXSTD: 14
+        SANITIZE: true
+
+      - COMPILER: g++-6
+        CXXSTD: 17
+        SANITIZE: true
+
+      - COMPILER: g++-5
+        CXXSTD: 11
+        SANITIZE: true
+
+      - COMPILER: g++-5
+        CXXSTD: 14
+        SANITIZE: true
+
+      - COMPILER: g++-5
+        CXXSTD: 17
+        SANITIZE: true
+
+      - COMPILER: g++-4.9
+        CXXSTD: 11
+        SANITIZE: true
+
+      - COMPILER: g++-4.9
+        CXXSTD: 14
+        SANITIZE: true
+
+      - COMPILER: g++-4.8
+        CXXSTD: 11
+        SANITIZE: true
+
   build_script:
     - CXX=${COMPILER} CXXFLAGS=${CXXFLAGS} ./check_errors.sh || {
         FAILURES="$?" ;
