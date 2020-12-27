@@ -300,9 +300,6 @@ jobs:
               -D CMAKE_CXX_STANDARD:STRING=${{ matrix.config.cxx_standard }}
               -D "CMAKE_CXX_FLAGS:STRING=${cxx_flags}"
               -D "CMAKE_EXE_LINKER_FLAGS:STRING=${link_flags}"
-              -D CMAKE_VERBOSE_MAKEFILE:BOOL=ON
-              -D RANGE_V3_HEADER_CHECKS:BOOL=ON
-              -D RANGES_PREFER_REAL_CONCEPTS:BOOL=${cxx_concepts}
               ${{ matrix.config.cmake_args }}
               ${extra_cmake_args}
             RESULT_VARIABLE result
@@ -333,7 +330,7 @@ jobs:
           set(ENV{PATH} "$ENV{GITHUB_WORKSPACE}${path_separator}$ENV{PATH}")
 
           execute_process(
-            COMMAND ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake --build build
+            COMMAND ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake --build self_test
             RESULT_VARIABLE result
           )
           if (NOT result EQUAL 0)
@@ -350,7 +347,7 @@ jobs:
           set(ENV{CTEST_OUTPUT_ON_FAILURE} "ON")
 
           execute_process(
-            COMMAND ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/ctest --verbose -j ${N}
+            COMMAND ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake --build run_coverage
             WORKING_DIRECTORY build
             RESULT_VARIABLE result
           )
