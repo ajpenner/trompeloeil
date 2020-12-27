@@ -5,6 +5,7 @@ on: [push, pull_request]
 
 env:
   CMAKE_VERSION: 3.16.2
+  NINJA_VERSION: 1.9.0
 
 jobs:
   build:
@@ -172,6 +173,7 @@ jobs:
         shell: cmake -P {0}
         run: |
           set(cmake_version $ENV{CMAKE_VERSION})
+          set(ninja_version $ENV{NINJA_VERSION})
 
           message(STATUS "Using host CMake version: ${CMAKE_VERSION}")
 
@@ -189,6 +191,10 @@ jobs:
             set(cmake_dir "cmake-${cmake_version}-Darwin-x86_64/CMake.app/Contents/bin")
           endif()
 
+          set(ninja_url "https://github.com/ninja-build/ninja/releases/download/v${ninja_version}/ninja-${ninja_suffix}")
+          file(DOWNLOAD "${ninja_url}" ./ninja.zip SHOW_PROGRESS)
+          execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./ninja.zip)
+
           set(cmake_url "https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-${cmake_version}-${cmake_suffix}")
           file(DOWNLOAD "${cmake_url}" ./cmake.zip SHOW_PROGRESS)
           execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./cmake.zip)
@@ -199,6 +205,7 @@ jobs:
 
           if (NOT "${{ runner.os }}" STREQUAL "Windows")
             execute_process(
+              COMMAND chmod +x ninja
               COMMAND chmod +x ${cmake_dir}/cmake
             )
           endif()
