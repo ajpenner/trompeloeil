@@ -330,7 +330,7 @@ jobs:
           set(ENV{PATH} "$ENV{GITHUB_WORKSPACE}${path_separator}$ENV{PATH}")
 
           execute_process(
-            COMMAND ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake --build self_test
+            COMMAND ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake --build build --target self_test
             RESULT_VARIABLE result
           )
           if (NOT result EQUAL 0)
@@ -347,7 +347,7 @@ jobs:
           set(ENV{CTEST_OUTPUT_ON_FAILURE} "ON")
 
           execute_process(
-            COMMAND ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake --build run_coverage
+            COMMAND ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake --build build --target run_coverage
             WORKING_DIRECTORY build
             RESULT_VARIABLE result
           )
