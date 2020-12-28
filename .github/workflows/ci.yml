@@ -518,7 +518,6 @@ jobs:
             os: windows-latest,
             build_type: Debug,
             cc: "cl", cxx: "cl",
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             cxx_standard: 11,
           }
           - {
@@ -526,7 +525,6 @@ jobs:
             os: windows-latest,
             build_type: Debug,
             cc: "cl", cxx: "cl",
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             cxx_standard: 14,
           }
           - {
@@ -534,7 +532,6 @@ jobs:
             os: windows-latest,
             build_type: Debug,
             cc: "cl", cxx: "cl",
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             cxx_standard: 17,
           }
           - {
@@ -542,7 +539,6 @@ jobs:
             os: windows-latest,
             build_type: Debug,
             cc: "cl", cxx: "cl",
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             cxx_standard: 20,
           }
 
@@ -654,7 +650,6 @@ jobs:
 
       - name: Build
         shell: cmake -P {0}
-        continue-on-error: ${{ matrix.config.experimental || false }}
         run: |
           execute_process(
             COMMAND cmake --build build --target self_test
@@ -666,7 +661,6 @@ jobs:
 
       - name: Run tests
         shell: cmake -P {0}
-        continue-on-error: ${{ matrix.config.experimental || false }}
         run: |
           execute_process(
             COMMAND cmake --build build --target run_self_test
