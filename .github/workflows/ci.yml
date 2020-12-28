@@ -601,6 +601,7 @@ jobs:
           $GITHUB_WORKSPACE/install_libcxx.sh
 
       - name: Verify compilation errors
+        if: (!startsWith(matrix.config.os, 'windows'))
         shell: bash
         run: |
           CXX=${{ matrix.config.cxx }} CXXFLAGS="-std=c++${{ matrix.config.cxx_standard }}" ./check_errors.sh ||
