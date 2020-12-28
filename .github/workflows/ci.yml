@@ -527,11 +527,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: get kcov version
-        uses: sudo-bot/action-kcov@latest
-        with:
-          cli-args: --version
-
       - name: Download Ninja and CMake
         id: cmake_and_ninja
         shell: cmake -P {0}
