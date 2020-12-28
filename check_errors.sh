@@ -22,11 +22,11 @@ echo "CPPFLAGS=$CPPFLAGS"
 
 # Default CXXFLAGS to -std=c++14 if not set in the environment
 # for backward compatibility.
-CXXFLAGS=${CXXFLAGS:-"-std=c++14"}
+#CXXFLAGS=${CXXFLAGS:-"-std=c++14"}
 
-echo "CXXFLAGS is now $CXXFLAGS"
+#echo "CXXFLAGS is now $CXXFLAGS"
 
-${CXX} --version
+#${CXX} --version
 cd compilation_errors
 SCRIPT='
 s:^//\(.*\)$:\1:g
@@ -40,7 +40,7 @@ do
   RE=`sed -n "$SCRIPT" < $f`
   printf "%-45s" $f
   # echo "RE=$RE"
-  ${CXX} ${CXXFLAGS} ${CPPFLAGS} -I ../include $f -c 2>&1 | egrep  "${RE}" && echo ${PASS} && continue || echo ${FAIL} && false
+  ${CXX} ${CXXFLAGS} ${CPPFLAGS} -I ../include $f -c 2>&1 | egrep  -q "${RE}" && echo ${PASS} && continue || echo ${FAIL} && false
   FAILURES=$((FAILURES+$?))
 done
 # echo "FAILURES=$FAILURES"
