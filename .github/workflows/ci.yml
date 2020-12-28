@@ -512,6 +512,40 @@ jobs:
             cxx_asan: true
           }
 
+          # MSVC 2019
+          - {
+            name: "Windows MSVC 2019 C++11",
+            os: windows-latest,
+            build_type: Debug,
+            cc: "cl", cxx: "cl",
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+            cxx_standard: 11,
+          }
+          - {
+            name: "Windows MSVC 2019 C++14",
+            os: windows-latest,
+            build_type: Debug,
+            cc: "cl", cxx: "cl",
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+            cxx_standard: 14,
+          }
+          - {
+            name: "Windows MSVC 2019 C++17",
+            os: windows-latest,
+            build_type: Debug,
+            cc: "cl", cxx: "cl",
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+            cxx_standard: 17,
+          }
+          - {
+            name: "Windows MSVC 2019 C++20",
+            os: windows-latest,
+            build_type: Debug,
+            cc: "cl", cxx: "cl",
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+            cxx_standard: 20,
+          }
+
     steps:
       - uses: actions/checkout@v2
 
