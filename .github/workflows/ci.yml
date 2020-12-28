@@ -153,6 +153,7 @@ jobs:
             cxx_asan: true
           }
 
+
           # Clang-5.0
           - {
             name: "Linux Clang 5.0 C++11 / libstdc++",
@@ -209,6 +210,173 @@ jobs:
             libcxx: true
           }
 
+          # Clang-6.0
+          - {
+            name: "Linux Clang 6.0 C++11 / libstdc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-6.0", cxx: "clang++-6.0",
+            cxx_standard: 11,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 6.0 C++14 / libstdc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-6.0", cxx: "clang++-6.0",
+            cxx_standard: 14,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 6.0 C++17 / libstc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-6.0", cxx: "clang++-6.0",
+            cxx_standard: 17,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 6.0 C++11 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-6.0", cxx: "clang++-6.0",
+            cxx_standard: 11,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 6.0 C++14 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-6.0", cxx: "clang++-6.0",
+            cxx_standard: 14,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 6.0 C++17 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-6.0", cxx: "clang++-6.0",
+            cxx_standard: 17,
+            cxx_asan: true,
+            libcxx: true
+          }
+
+          # Clang-8
+          - {
+            name: "Linux Clang 8 C++11 / libstdc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-8", cxx: "clang++-8",
+            cxx_standard: 11,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 8 C++14 / libstdc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-8", cxx: "clang++-8",
+            cxx_standard: 14,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 8 C++17 / libstc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-8", cxx: "clang++-8",
+            cxx_standard: 17,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 8 C++11 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-8", cxx: "clang++-8",
+            cxx_standard: 11,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 8 C++14 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-8", cxx: "clang++-8",
+            cxx_standard: 14,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 8 C++17 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-8", cxx: "clang++-8",
+            cxx_standard: 17,
+            cxx_asan: true,
+            libcxx: true
+          }
+
+          # Clang-9
+          - {
+            name: "Linux Clang 9 C++11 / libstdc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-9", cxx: "clang++-9",
+            cxx_standard: 11,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 9 C++14 / libstdc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-9", cxx: "clang++-9",
+            cxx_standard: 14,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 9 C++17 / libstc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-9", cxx: "clang++-9",
+            cxx_standard: 17,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 9 C++11 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-9", cxx: "clang++-9",
+            cxx_standard: 11,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 9 C++14 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-9", cxx: "clang++-9",
+            cxx_standard: 14,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 9 C++17 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-9", cxx: "clang++-9",
+            cxx_standard: 17,
+            cxx_asan: true,
+            libcxx: true
+          }
 
     steps:
       - uses: actions/checkout@v2
