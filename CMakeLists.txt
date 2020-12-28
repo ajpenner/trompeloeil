@@ -281,10 +281,16 @@ if (MASTER_PROJECT AND CMAKE_BUILD_TYPE MATCHES Debug)
     custom_recursive_mutex
     PUBLIC
     trompeloeil
-    pthread
   )
+  if (NOT MSVC)
+      target_link_libraries(
+              custom_recursive_mutex
+              PUBLIC
+              pthread
+      )
+  endif()
 
-  if (SANITIZE)
+  if (SANITIZE AND NOT APPLE)
     set_target_properties(
       custom_recursive_mutex
       PROPERTIES
