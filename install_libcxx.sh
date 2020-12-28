@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TRUNK_VERSION="9.0.0"
+TRUNK_VERSION="12.0.0"
 
 set -e
 
@@ -44,6 +44,7 @@ if [ -z ${VERSION+x} ]; then
     exit 4
 fi
 
+MAJOR=$(echo $VERSION | sed 's/\..*//')
 if [ ${VERSION} == $TRUNK_VERSION ]; then
     echo "Fetching libc++ and libc++abi tip-of-trunk..."
 
@@ -53,13 +54,20 @@ if [ ${VERSION} == $TRUNK_VERSION ]; then
     git clone --depth=1 https://github.com/llvm-mirror/libcxxabi.git llvm-source/projects/libcxxabi
 else
     echo "Fetching libc++/libc++abi version: ${VERSION}..."
-    LLVM_URL="https://releases.llvm.org/${VERSION}/llvm-${VERSION}.src.tar.xz"
-    LIBCXX_URL="https://releases.llvm.org/${VERSION}/libcxx-${VERSION}.src.tar.xz"
-    LIBCXXABI_URL="https://releases.llvm.org/${VERSION}/libcxxabi-${VERSION}.src.tar.xz"
-    curl -O $LLVM_URL
-    curl -O $LIBCXX_URL
-    curl -O $LIBCXXABI_URL
-
+    if [ ${MAJOR} -gt 9 ]; then
+        BASE_URL="https://github.com/llvm/llvm-project/releases/download/llvmorg-"
+    else
+        BASE_URL="https://releases.llvm.org/"
+    fi
+    LLVM_URL="${BASE_URL}${VERSION}/llvm-${VERSION}.src.tar.xz"
+    LIBCXX_URL="${BASE_URL}${VERSION}/libcxx-${VERSION}.src.tar.xz"
+    LIBCXXABI_URL="${BASE_URL}${VERSION}/libcxxabi-${VERSION}.src.tar.xz"
+    echo wget $LLVM_URL
+    echo wget $LIBCXX_URL
+    echo wget $LIBCXXABI_URL
+    wget $LLVM_URL
+    wget $LIBCXX_URL
+    wget $LIBCXXABI_URL
     mkdir llvm-source
     mkdir llvm-source/projects
     mkdir llvm-source/projects/libcxx
