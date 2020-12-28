@@ -452,6 +452,80 @@ jobs:
             libcxx: true
           }
 
+          # Clang-11
+          - {
+            name: "Linux Clang 11 C++11 / libstdc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-11", cxx: "clang++-11",
+            cxx_standard: 11,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 11 C++14 / libstdc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-11", cxx: "clang++-11",
+            cxx_standard: 14,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 11 C++17 / libstc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-11", cxx: "clang++-11",
+            cxx_standard: 17,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 11 C++20 / libstc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-11", cxx: "clang++-11",
+            cxx_standard: 20,
+            cxx_asan: true,
+            libcxx: false
+          }
+          - {
+            name: "Linux Clang 11 C++11 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-11", cxx: "clang++-11",
+            cxx_standard: 11,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 11 C++14 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-11", cxx: "clang++-11",
+            cxx_standard: 14,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 11 C++17 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-11", cxx: "clang++-11",
+            cxx_standard: 17,
+            cxx_asan: true,
+            libcxx: true
+          }
+          - {
+            name: "Linux Clang 11 C++20 / libc++",
+            os: ubuntu-latest,
+            build_type: Debug,
+            cc: "clang-11", cxx: "clang++-11",
+            cxx_standard: 20,
+            cxx_asan: true,
+            libcxx: true
+          }
+
     steps:
       - uses: actions/checkout@v2
 
@@ -530,6 +604,16 @@ jobs:
           wget https://apt.llvm.org/llvm.sh
           chmod +x llvm.sh
           sudo ./llvm.sh 10
+
+      - name: Install Clang 11
+        id: install_clang_11
+        if: startsWith(matrix.config.os, 'ubuntu') && ( matrix.config.cxx == 'clang++-11' )
+        shell: bash
+        working-directory: ${{ env.HOME }}
+        run: |
+          wget https://apt.llvm.org/llvm.sh
+          chmod +x llvm.sh
+          sudo ./llvm.sh 11
 
       - name: Install libc++
         id: install_libcxx
