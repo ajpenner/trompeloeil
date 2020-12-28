@@ -492,7 +492,7 @@ jobs:
 
           # AppleClang
           - {
-            name: "macOS Clang C++11"
+            name: "macOS Clang C++11",
             os: macos-latest,
             build_type: Debug,
             cc: "clang", cxx: "clang++",
@@ -500,7 +500,7 @@ jobs:
             cxx_asan: true
           }
           - {
-            name: "macOS Clang C++14"
+            name: "macOS Clang C++14",
               os: macos-latest,
             build_type: Debug,
             cc: "clang", cxx: "clang++",
@@ -508,7 +508,7 @@ jobs:
             cxx_asan: true
           }
           - {
-            name: "macOS Clang C++17"
+            name: "macOS Clang C++17",
               os: macos-latest,
             build_type: Debug,
             cc: "clang", cxx: "clang++",
@@ -516,7 +516,7 @@ jobs:
             cxx_asan: true
           }
           - {
-            name: "macOS Clang C++20"
+            name: "macOS Clang C++20",
               os: macos-latest,
             build_type: Debug,
             cc: "clang", cxx: "clang++",
