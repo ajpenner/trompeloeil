@@ -11,6 +11,14 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          # GCC-4.8
+          - {
+            name: "Linux GCC 4.8 C++11",
+            os: ubuntu-16.04,
+            cc: "gcc-4.8", cxx: "g++-4.8",
+            cxx_standard: 11,
+            cxx_asan: true
+          }
           # GCC-4.9
           - {
             name: "Linux GCC 4.9 C++11",
@@ -522,6 +530,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Install GCC 4.8
+        id: install_gcc_4_8
+        if: startsWith(matrix.config.os, 'ubuntu') && ( matrix.config.cxx == 'g++-4.8' )
+        shell: bash
+        working-directory: ${{ env.HOME }}
+        run: |
+          sudo apt-get install -y gcc-4.8 g++-4.8
 
       - name: Install GCC 4.9
         id: install_gcc_4_9
