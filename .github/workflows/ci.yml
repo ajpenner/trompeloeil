@@ -11,6 +11,21 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          # GCC-4.9
+          - {
+            name: "Linux GCC 4.9 C++11",
+            os: ubuntu-16.04,
+            cc: "gcc-4.9", cxx: "g++-4.9",
+            cxx_standard: 11,
+            cxx_asan: true
+          }
+          - {
+            name: "Linux GCC 4.9 C++14",
+            os: ubuntu-16.04,
+            cc: "gcc-4.9", cxx: "g++-4.9",
+            cxx_standard: 14,
+            cxx_asan: true
+          }
           # GCC-5
           - {
             name: "Linux GCC 5 C++11",
@@ -508,13 +523,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install GCC 5
-        id: install_gcc_5
-        if: startsWith(matrix.config.os, 'ubuntu') && ( matrix.config.cxx == 'g++-5' )
+      - name: Install GCC 4.9
+        id: install_gcc_4_9
+        if: startsWith(matrix.config.os, 'ubuntu') && ( matrix.config.cxx == 'g++-4.9' )
         shell: bash
         working-directory: ${{ env.HOME }}
         run: |
-          sudo apt-get install -y gcc-5 g++-5
+          sudo apt-get install -y gcc-4.9 g++-4.9
 
       - name: Install GCC 6
         id: install_gcc_6
